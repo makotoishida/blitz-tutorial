@@ -1,15 +1,15 @@
 import { Suspense } from "react"
 import { Head, Link, usePaginatedQuery, useRouter, BlitzPage, Routes } from "blitz"
 import Layout from "app/core/layouts/Layout"
-import getProjects from "app/projects/queries/getProjects"
+import getQuestions from "app/questions/queries/getQuestions"
 
-const ITEMS_PER_PAGE = 3
+const ITEMS_PER_PAGE = 100
 
-export const ProjectsList = () => {
+export const QuestionsList = () => {
   const router = useRouter()
   const page = Number(router.query.page) || 0
-  const [{ projects, hasMore }] = usePaginatedQuery(getProjects, {
-    orderBy: { id: "desc" },
+  const [{ questions, hasMore }] = usePaginatedQuery(getQuestions, {
+    orderBy: { id: "asc" },
     skip: ITEMS_PER_PAGE * page,
     take: ITEMS_PER_PAGE,
   })
@@ -20,11 +20,18 @@ export const ProjectsList = () => {
   return (
     <div>
       <ul>
-        {projects.map((project) => (
-          <li key={project.id}>
-            <Link href={Routes.ShowProjectPage({ projectId: project.id })}>
-              <a>{project.name}</a>
+        {questions.map((question) => (
+          <li key={question.id}>
+            <Link href={Routes.ShowQuestionPage({ questionId: question.id })}>
+              <a>{question.text}</a>
             </Link>
+            <ul>
+              {question.choices.map((choice) => (
+                <li key={choice.id}>
+                  {choice.text} - {choice.votes} votes
+                </li>
+              ))}
+            </ul>
           </li>
         ))}
       </ul>
@@ -39,33 +46,32 @@ export const ProjectsList = () => {
   )
 }
 
-const ProjectsPage: BlitzPage = () => {
+const QuestionsPage: BlitzPage = () => {
   return (
     <>
       <Head>
-        <title>プロジェクト</title>
+        <title>Questions</title>
       </Head>
 
       <div>
-        <h3>プロジェクト一覧</h3>
-        <p style={{ display: "flex", gap: "1.0rem" }}>
+        <p style={{ display: "flex", gap: "1rem" }}>
           <Link href={Routes.Home()}>
             <a>Home</a>
           </Link>
-          <Link href={Routes.NewProjectPage()}>
-            <a>Create Project</a>
+          <Link href={Routes.NewQuestionPage()}>
+            <a>Create Question</a>
           </Link>
         </p>
 
         <Suspense fallback={<div>Loading...</div>}>
-          <ProjectsList />
+          <QuestionsList />
         </Suspense>
       </div>
     </>
   )
 }
 
-ProjectsPage.authenticate = true
-ProjectsPage.getLayout = (page) => <Layout>{page}</Layout>
+QuestionsPage.authenticate = true
+QuestionsPage.getLayout = (page) => <Layout>{page}</Layout>
 
-export default ProjectsPage
+export default QuestionsPage
