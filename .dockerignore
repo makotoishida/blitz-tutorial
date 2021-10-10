@@ -1,0 +1,5 @@
+Dockerfile*
+.tsbuildinfo
+.next/
+.git/
+docker/
