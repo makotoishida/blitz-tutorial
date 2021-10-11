@@ -3,7 +3,7 @@
 FROM node:16-slim
 WORKDIR /app
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
-  apt-get install -y openssl && \
+  apt-get install -y openssl git && \
   apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/debconf/*
 
 COPY package.json package*.json ./

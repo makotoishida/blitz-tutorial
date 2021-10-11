@@ -63,10 +63,10 @@ const Home: BlitzPage = () => {
         <div>
           <p style={{ display: "flex", gap: "1rem" }}>
             <Link href={Routes.ProjectsPage()}>
-              <a>プロジェクト一覧へ</a>
+              <a>プロジェクト一覧</a>
             </Link>
             <Link href={Routes.QuestionsPage()}>
-              <a>質問一覧へ</a>
+              <a>質問一覧</a>
             </Link>
           </p>
         </div>
