@@ -32,8 +32,8 @@ COPY package.json package*.json ./
 COPY --from=node_modules /app/node_modules ./node_modules/
 COPY --from=build /app/node_modules/.prisma ./node_modules/.prisma/
 COPY --from=build /app/.next ./.next/
-COPY ./db/schema.prisma ./db/
-COPY ./.blitz.config.compiled.js ./
+COPY db/schema.prisma ./db/
+COPY .blitz.config.compiled.js ./
 EXPOSE 3000
 CMD ["npm", "start"]
 
