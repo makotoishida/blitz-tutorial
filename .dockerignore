@@ -1,5 +1,14 @@
 Dockerfile*
+docker-compose*.yml
 .tsbuildinfo
 .next/
 .git/
+.devcontainer/
+.vscode/
+.husky/
 docker/
+.*ignore
+.editorconfig
+.env*.local
+.*rc
+README.md

@@ -1,0 +1,13 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "gcr.io/blitz-tutorial/github.com/makotoishida/blitz-tutorial",
+        "-f",
+        "docker/Dockerfile",
+        ".",
+      ]
+
+images: ["gcr.io/blitz-tutorial/github.com/makotoishida/blitz-tutorial"]
