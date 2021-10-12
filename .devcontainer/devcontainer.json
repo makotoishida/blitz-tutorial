@@ -20,7 +20,18 @@
   "settings": {},
 
   // Add the IDs of extensions you want installed when the container is created.
-  "extensions": []
+  "extensions": [
+    "esbenp.prettier-vscode",
+    "prisma.prisma",
+    "bradlc.vscode-tailwindcss",
+    "mgmcdermott.vscode-language-babel",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "donjayamanne.githistory",
+    "eamodio.gitlens",
+    "bradgashler.htmltagwrap",
+    "garaemon.oneline-scroll"
+  ]
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
