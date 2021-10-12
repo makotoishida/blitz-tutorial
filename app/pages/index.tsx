@@ -35,14 +35,20 @@ const UserInfo = () => {
   } else {
     return (
       <>
-        <Link href={Routes.SignupPage()}>
+        {/* <Link href={Routes.SignupPage()}>
           <a className="button small">
             <strong>Sign Up</strong>
           </a>
-        </Link>
+        </Link> */}
         <Link href={Routes.LoginPage()}>
           <a className="button small">
-            <strong>Login</strong>
+            <strong>Login with Email</strong>
+          </a>
+        </Link>
+
+        <Link href="/api/auth/google">
+          <a className="button small">
+            <strong>Login With Google</strong>
           </a>
         </Link>
       </>
